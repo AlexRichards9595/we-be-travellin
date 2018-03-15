@@ -21,6 +21,7 @@ xhr.onreadystatechange = function() {
 			appendElement(stateContainer, createElement('h3', res.abb))
 			appendElement(stateContainer, createElement('p', res.motto))
 			appendElement(stateContainer, createElement('p', res.fish))
+			appendElement(stateContainer, createElement('p', res.cities))
 			
 			appendElement(body, courseContainer)
 		}

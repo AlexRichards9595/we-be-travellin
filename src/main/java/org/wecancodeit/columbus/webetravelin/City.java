@@ -38,9 +38,10 @@ public class City {
 		
 	}
 
-	public City(String name, String population) {
+	public City(String name, String population, State state) {
 		this.name = name;
 		this.population = population;
+		this.state = state;
 	}
 
 }
