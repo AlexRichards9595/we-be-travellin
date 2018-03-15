@@ -38,7 +38,7 @@ public class StateTest {
 		entityManager.flush();
 		entityManager.clear();
 		
-		Object check = stateRepo.findOne(stateId);
+		State check = stateRepo.findOne(stateId);
 		
 		
 		assertThat(underTest, is(check));
