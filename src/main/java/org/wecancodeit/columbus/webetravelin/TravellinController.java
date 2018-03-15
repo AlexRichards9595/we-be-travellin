@@ -20,6 +20,9 @@ public class TravellinController {
 		return "states";
 	}
 	
+	@RequestMapping(value = "/{id}")
+	public State
+	
 	
 	
 	

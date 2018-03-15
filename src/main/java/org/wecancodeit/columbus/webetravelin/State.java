@@ -1,38 +1,77 @@
 package org.wecancodeit.columbus.webetravelin;
 
+import static java.util.Arrays.asList;
+
+import java.util.Collection;
+import java.util.HashSet;
+
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 
 @Entity
 public class State {
-	
+
+	// Variables
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 
-	public Long getId() {
+	private String abb;
+	private String stateName;
+	private String motto;
+
+	@Embedded
+	private Fish fish;
+
+	// Constructors
+	public State() {
+	}
+
+	public State(String abb, String name, String motto, Fish fish, City... cities) {
+		this.abb = abb;
+		this.stateName = name;
+		this.motto = motto;
+		this.fish = fish;
+		this.cities = new HashSet<>(asList(cities));
+	}
+
+	// Getters
+	public long getId() {
 		return id;
 	}
 
-	private String abb;
-	
-	public State() {}
+	public String getName() {
+		return stateName;
+	}
 
-	public State(String abb) {
-		this.abb = abb;
+	public String getMotto() {
+		return motto;
+	}
+
+	public Fish getFish() {
+		return fish;
 	}
 
 	public String getAbb() {
 		return abb;
 	}
- 
+
+	@OneToMany(mappedBy = "state")
+	private Collection<City> cities;
+
+	public Collection<City> getCities() {
+		return cities;
+	}
+
+	// Formatters
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -45,6 +84,5 @@ public class State {
 
 		return id == ((State) obj).id;
 	}
-	
 
 }

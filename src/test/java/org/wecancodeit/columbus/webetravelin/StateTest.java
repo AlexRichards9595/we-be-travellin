@@ -23,7 +23,7 @@ public class StateTest {
 	
 	@Test
 	public void stateShouldHaveAbrreviation() {
-		State underTest = new State("OH");
+		State underTest = new State("OH", "Ohio", null, null);
 		
 		String check = underTest.getAbb();
 		
@@ -31,7 +31,7 @@ public class StateTest {
 	}
 	@Test
 	public void assertThatStateWasAddedToRepo() {
-		State underTest = new State("OH");
+		State underTest = new State("OH", null, null, null);
 		stateRepo.save(underTest);
 		long stateId = underTest.getId();
 		
