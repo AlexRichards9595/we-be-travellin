@@ -22,8 +22,16 @@ public class TravellinController {
 	}
 	
 	@RequestMapping(value = "/{id}")
-	public State findOneState(@PathVariable long id) {
+	public State findOneState(@PathVariable Long id) {
 		return stateRepo.findOne(id);
+	}
+	
+	@RequestMapping("")
+	public Iterable<State> findAllStates(@RequestParam(defaultValue = "") String search ) {
+		if (search.isEmpty()) {
+			return stateRepo.findAll();
+		}
+		return stateRepo.findAllByAbbIgnoreCaseLike(search);
 	}
 	
 	

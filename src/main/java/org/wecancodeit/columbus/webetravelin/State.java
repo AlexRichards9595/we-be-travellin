@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class State {
 
@@ -58,7 +60,7 @@ public class State {
 	public String getAbb() {
 		return abb;
 	}
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "state")
 	private Collection<City> cities;
 
